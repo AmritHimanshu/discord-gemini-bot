@@ -12,7 +12,7 @@ model_name=os.getenv("MODEL_NAME")
 
 
 genai.configure(api_key=gemini_api_key)
-model = genai.GenerativeModel(model_name=model_name)
+model = genai.GenerativeModel(model_name=f"{model_name}")
 
 with open("chat.txt" , "r") as f:
     chat = f.read()
