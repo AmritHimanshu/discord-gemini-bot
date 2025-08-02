@@ -12,10 +12,10 @@ model_name=os.getenv("MODEL_NAME")
 
 
 genai.configure(api_key=gemini_api_key)
-model = genai.GenerativeModel(model_name=f"{model_name}")
+model = genai.GenerativeModel(model_name=model_name)
 
-with open("chat.txt" , "r") as f:
-    chat = f.read()
+# with open("chat.txt" , "r") as f:
+#     chat = f.read()
 
 # chat = ""
 
@@ -33,10 +33,11 @@ class MyClient(discord.Client):
 
     async def on_message(self, message):
         print(f'Message from {message.author}: {message.content}')
-        global chat
-        chat += f"{message.author}: {message.content}\n"
+        # global chat
+        # chat += f"{message.author}: {message.content}\n"
         if self.user != message.author and self.user in message.mentions:
-            prompt = f"{chat}\nCdacGPT: "
+            # prompt = f"{chat}\nCdacGPT: "
+            prompt = message.content
             reply = query_gemini(prompt)
             await message.channel.send(reply)
 
