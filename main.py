@@ -8,10 +8,11 @@ load_dotenv()
 
 discord_token = os.getenv("SECRET_KEY")
 gemini_api_key = os.getenv("GEMINI_API_KEY")
+model_name=os.getenv("MODEL_NAME")
 
 
 genai.configure(api_key=gemini_api_key)
-model = genai.GenerativeModel(model_name='gemini-2.5-flash')
+model = genai.GenerativeModel(model_name=model_name)
 
 with open("chat.txt" , "r") as f:
     chat = f.read()
